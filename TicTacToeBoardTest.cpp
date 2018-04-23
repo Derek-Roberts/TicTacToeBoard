@@ -35,7 +35,7 @@ TEST(TicTacToeBoardTest, getWinnerRowTest)
 	obj.placePiece(0,1);
 	obj.placePiece(1,2);
 	obj.placePiece(0,2);
-	ASSERT_TRUE( obj.getWinner() == 'X' );
+	ASSERT_TRUE( obj.getWinner() == 'O' );
 }
 
 TEST(TicTacToeBoardTest, getWinnerColumnTest)
