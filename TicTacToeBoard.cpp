@@ -38,15 +38,18 @@ Piece TicTacToeBoard::toggleTurn()
 **/ 
 Piece TicTacToeBoard::placePiece(int row, int column)
 {
+	// If the space is blank
 	if (board[row][column] == Blank) {
 		Piece newPiece = turn;
 		board[row][column] = newPiece;
 		toggleTurn();
 		return newPiece;
 	}
+	// If the space is not blank
 	else if (board[row][column] == X || board[row][column] == O) {
 		return board[row][column];
 	}
+	// If the space is neither blank or not blank: an error has occured
 	else {
 		return Invalid;
 	}
@@ -67,5 +70,22 @@ Piece TicTacToeBoard::getPiece(int row, int column)
 **/
 Piece TicTacToeBoard::getWinner()
 {
+	// Check for row winner
+	for(int i=0; i<BOARDSIZE; i++)
+		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != Blank)
+			return (turn);
+	
+	// Check for column winner
+	for(int i=0; i<BOARDSIZE; i++)
+		if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != Blank)
+			return (turn);
+	
+	// Check for diagonal winner
+	if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != Blank)
+        return(turn);
+         
+  if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != Blank)
+        return(turn);
+	
   return Invalid;
 }
