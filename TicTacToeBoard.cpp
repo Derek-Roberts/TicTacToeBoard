@@ -61,7 +61,18 @@ Piece TicTacToeBoard::placePiece(int row, int column)
 **/
 Piece TicTacToeBoard::getPiece(int row, int column)
 {
-  return Invalid;
+	if ((row < 0 || row > BOARDSIZE) || (column < 0 || column > BOARDSIZE)) {
+		return Invalid;
+	}
+	else if (board[row][column] == Blank) {
+		return Blank;
+	}
+	else if (board[row][column] == X || board[row][column] == O) {
+		return board[row][column];
+	}
+	else {
+		return Invalid;
+	}
 }
 
 /**
@@ -72,19 +83,19 @@ Piece TicTacToeBoard::getWinner()
 {
 	// Check for row winner
 	for(int i=0; i<BOARDSIZE; i++)
-		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != Blank)
+		if (getPiece(i,0) == getPiece(i,1) && getPiece(i,1) == getPiece(i,2) && getPiece(i,0) != Blank)
 			return (turn);
 	
 	// Check for column winner
 	for(int i=0; i<BOARDSIZE; i++)
-		if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != Blank)
+		if (getPiece(0,i) == getPiece(1,i) && getPiece(1,i) == getPiece(2,i) && getPiece(0,i) != Blank)
 			return (turn);
 	
 	// Check for diagonal winner
-	if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != Blank)
+	if (getPiece(0,0) == getPiece(1,1) && getPiece(1,1) == getPiece(2,2) && getPiece(0,0) != Blank)
         return(turn);
          
-  if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != Blank)
+  if (getPiece(0,2) == getPiece(1,1) && getPiece(1,1) == getPiece(2,0) && getPiece(0,2) != Blank)
         return(turn);
 	
   return Invalid;

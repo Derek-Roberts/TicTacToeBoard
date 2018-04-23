@@ -27,9 +27,30 @@ TEST(TicTacToeBoardTest, toggleTurnTest)
 	ASSERT_TRUE( obj.toggleTurn() );
 }
 
-TEST(TicTacToeBoardTest, getWinner)
+TEST(TicTacToeBoardTest, getWinnerRowTest)
 {
 	TicTacToeBoard obj;
+	obj.placePiece(0,0);
+	obj.placePiece(0,1);
+	obj.placePiece(0,2);
+	ASSERT_TRUE( obj.getWinner() );
+}
+
+TEST(TicTacToeBoardTest, getWinnerColumnTest)
+{
+	TicTacToeBoard obj;
+	obj.placePiece(0,0);
+	obj.placePiece(1,0);
+	obj.placePiece(2,0);
+	ASSERT_TRUE( obj.getWinner() );
+}
+
+TEST(TicTacToeBoardTest, getWinnerDiagonalTest)
+{
+	TicTacToeBoard obj;
+	obj.placePiece(0,0);
+	obj.placePiece(1,1);
+	obj.placePiece(2,2);
 	ASSERT_TRUE( obj.getWinner() );
 }
 
