@@ -19,12 +19,12 @@ TicTacToeBoard::TicTacToeBoard()
 **/
 Piece TicTacToeBoard::toggleTurn()
 {
-	switch(turn) {
-		case X: turn = O; return turn;
-		case O: turn = X; return turn;
-		default: break;
+	if (turn == X) {
+		return turn = O;
 	}
-	return Invalid;
+	else {
+		return turn = X;
+	}
 }
 
 /**
@@ -38,16 +38,26 @@ Piece TicTacToeBoard::toggleTurn()
 **/ 
 Piece TicTacToeBoard::placePiece(int row, int column)
 {
+	Piece winner = getWinner();
+
+	// If the game is over a piece can't be placed
+	if ((winner == X) || (winner == O)) {
+		return Invalid;
+	}
+	// If the space is out of bounds
+	else if ((row < 0 || row > BOARDSIZE) || (column < 0 || column > BOARDSIZE)) {
+		return Invalid;
+	}
+	// If the space is not blank
+	else if (getPiece(row,column) == X || getPiece(row,column) == O) {
+		return board[row][column];
+	}
 	// If the space is blank
-	if (board[row][column] == Blank) {
+	else if (getPiece(row,column) == Blank) {
 		Piece newPiece = turn;
 		board[row][column] = newPiece;
 		toggleTurn();
 		return newPiece;
-	}
-	// If the space is not blank
-	else if (board[row][column] == X || board[row][column] == O) {
-		return board[row][column];
 	}
 	// If the space is neither blank or not blank: an error has occured
 	else {

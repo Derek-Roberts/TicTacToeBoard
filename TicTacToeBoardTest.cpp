@@ -27,6 +27,24 @@ TEST(TicTacToeBoardTest, toggleTurnTest)
 	ASSERT_TRUE( obj.toggleTurn() );
 }
 
+TEST(TicTacToeBoardTest, placePieceAfterWinTest)
+{
+	TicTacToeBoard obj;
+	obj.placePiece(0,0);
+	obj.placePiece(1,1);
+	obj.placePiece(0,1);
+	obj.placePiece(1,2);
+	obj.placePiece(0,2);
+	// The winner is 'O' now trying to place a piece
+	ASSERT_TRUE( obj.placePiece(0,0) );
+}
+
+TEST(TicTacToeBoardTest, placePieceOutOfBoundsTest)
+{
+	TicTacToeBoard obj;
+	ASSERT_TRUE( obj.placePiece(-1,0) == '?');
+}
+
 TEST(TicTacToeBoardTest, getWinnerRowTest)
 {
 	TicTacToeBoard obj;
