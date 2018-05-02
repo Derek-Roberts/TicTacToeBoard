@@ -10,7 +10,9 @@ before_install:
   - export GTEST_DIR=$(pwd)
   - cd make
   - make
+  - pwd
   - cd ../../../..
+  - pwd
 
 script:
   - make clean
