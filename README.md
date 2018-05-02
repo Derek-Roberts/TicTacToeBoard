@@ -1,5 +1,5 @@
 # TicTacToeBoard
-[![Build Status](https://travis-ci.org/Derek-Roberts/TicTacToeBoard.svg?branch=master)](https://travis-ci.org/Derek-Roberts/TicTacToeBoard)
+[![Build Status](https://travis-ci.org/Derek-Roberts/TicTacToeBoard.svg?branch=master)](https://travis-ci.org/Derek-Roberts/TicTacToeBoard) [![Coverage Status](https://coveralls.io/repos/github/Derek-Roberts/TicTacToeBoard/badge.svg?branch=master)](https://coveralls.io/github/Derek-Roberts/TicTacToeBoard?branch=master)
 
 ## Associated Enumerated Types
 `Piece` has four possible values: `X`,`O`,`Invalid`, and `Blank`
